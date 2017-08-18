@@ -1,8 +1,7 @@
-# robotframework-compareimage
+## robotframework-compareimage
 
-======================================
-Robot Framework Compare Images Keyword
-======================================
+# Robot Framework Compare Images Keyword
+
 
 Robot Framework keywords to compare two images.
 
@@ -16,19 +15,33 @@ The basis of this is an image comparison tool and after some research we decided
 Requirements
 ============
 
-- Perceptual diff
+- Perceptualdiff (http://pdiff.sourceforge.net)
+
+	It is available in ubuntu repositories:
+
+	```
+	$apt-get install perceptualdiff
+	```
+
+Installation
+============
+
+Install robotframework-imagecompare
+
+	pip install git+https://github.com/yuriqp/robotframework-imagecompare.git
 
 Usage
 =====
 
-The keyword Compare Images can be use in a robot framework test as a normal keyword.
+The keyword *Compare Images* can be use in a robot framework test as a normal keyword.
 
 It takes two arguments: the reference image path and the test image path.
 
-.. code:: robotframework
+```
 	...
-	Compare Images		ref.png		test.png
+	Compare Images		baseline/ref.png		test/test.png
 	...
+```
 
 If the reference does not exists, the test image is stored in the given location as reference and the test pass.
 
