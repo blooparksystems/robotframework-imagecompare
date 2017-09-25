@@ -73,15 +73,15 @@ def compare_images(baseline_img, test_img):
 
         # if the diff_ppm was created, differences were found
         if os.path.exists(diff_ppm):
-            # convert image form ppm to png
+            # convert image from ppm to png
             diff_img = Image.open(diff_ppm)
-            R, G, B = diff_img.split()
+            _, _, B = diff_img.split()
             base_img = Image.open(baseline_img)
             # The diff image is black with differences pixels in blue
             # Use the blue band to create a mask, and put on the base image
             Image.composite(diff_img, base_img, B).save(diff_png)
             os.remove(diff_ppm)
-            logger.info("<img src='%s' width='800px'>" % diff_png, html=True)
+            logger.info("<img src='%s' width='800px'/>" % diff_png, html=True)
             raise AssertionError('Images missmatched')
 
     return True
